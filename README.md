@@ -5,9 +5,10 @@ Each project lives in its own folder with a small README. This log is the record
 
 ## Learning Log
 
-| # | Project | Date | New concepts | What I learned |
-|---|---------|------|--------------|----------------|
-| 1 | Number guessing game | | `while`, conditionals, `input()`, `random` | _coming soon_ |
+| # | Project | Date       | New concepts | What I learned |
+|---|---------|------------|--------------|---------------|
+| 1 | Number guessing game | 2026-07-28 | `random` | `input()` always returns text, so I had to `int()` it before comparing. Also got used to indentation replacing braces. |
+| 2 | FizzBuzz | 2026-07-29 | `for`, `range()` | `range(1, n+1)` is exclusive on the upper end. Modulo I already knew from Java. |
 
 ## Roadmap
 
