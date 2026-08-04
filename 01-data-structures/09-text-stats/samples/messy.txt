@@ -1,0 +1,1 @@
+   whitespace   everywhere...   and     double  spaces!!!   Some UPPERCASE and some lowercase words.   Numbers like 42 and 1000 appear too.   Does it handle   multiple   spaces?   It should!   Hyphenated-words and contractions like don't and it's are tricky.
