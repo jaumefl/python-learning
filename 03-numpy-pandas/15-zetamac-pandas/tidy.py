@@ -1,7 +1,7 @@
 import pandas as pd
 
 def load_raw(path):
-    df = pd.read_csv("data/quant_prep_daily_log.csv", usecols=["Date", "Round 1", "Round 2", "Round 3"],
+    df = pd.read_csv(path, usecols=["Date", "Round 1", "Round 2", "Round 3"],
                      parse_dates=["Date"])
     return df
 
