@@ -23,8 +23,13 @@ def main():
     daily = build_daily(df)
     slope, intercept = fit_trend(daily)
 
-    print(f"First week average:  {daily['avg'].head(7).mean():.2f}")
-    print(f"Last week average:   {daily['avg'].tail(7).mean():.2f}")
+    first_week = daily["avg"].head(7).mean()
+    last_week = daily["avg"].tail(7).mean()
+
+    print(f"First week average:  {first_week:.2f}")
+    print(f"Last week average:   {last_week:.2f}")
+    print(f"Improvement:         {last_week - first_week:+.2f} points ({(last_week / first_week - 1) * 100:+.1f}%)")
+
     print(f"Trend:               {slope:+.2f} points/day")
 
     best_round = df.loc[df["score"].idxmax()]
