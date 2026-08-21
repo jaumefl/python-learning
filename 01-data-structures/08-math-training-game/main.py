@@ -1,6 +1,10 @@
 import time
 import random
+import csv
+from pathlib import Path
 from datetime import datetime
+
+RESULTS = Path(__file__).parent / "results.csv"
 
 def main():
 
@@ -71,21 +75,30 @@ def play_game():
                 except ValueError:
                     continue
     print(f"\nYou had {score} correct answers out of {total} questions.\n")
+    save_result(score, total)
+
+
+def save_result(score, total):
     stamp = datetime.now().strftime("%Y-%m-%d %H:%M")
-    with open("record.txt", "a", encoding="utf-8") as file:
-        file.write(f"{stamp} -> {score} correct answers out of {total} attempts.\n")
+    new_file = not RESULTS.exists()
+    with open(RESULTS, "a", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        if new_file:
+            writer.writerow(["timestamp", "correct", "total"])
+        writer.writerow([stamp, score, total])
 
 def load_record():
     try:
-        with open("record.txt","r", encoding="utf-8") as f:
-            lines = f.readlines()
-            print()
-            for line in lines[-20:]:
-                print(line.strip())
-            print()
+        with open(RESULTS, "r", newline="", encoding="utf-8") as f:
+            rows = list(csv.reader(f))
     except FileNotFoundError:
         print("No records yet.")
+        return
 
+    print()
+    for stamp, correct, total in rows[1:][-20:]:
+        print(f"{stamp} -> {correct}/{total}")
+    print()
 
 if __name__ == "__main__":
     main()
